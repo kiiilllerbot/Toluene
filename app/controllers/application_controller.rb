@@ -1,6 +1,14 @@
 class ApplicationController < ActionController::Base
 
-	before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def authenticate_inviter!
+    if current_user.role == "Developer"
+              redirect_to root_path, :alert => "Access Denied! Only Manager Can Add New Developer"
+    end
+    super
+  end
+  
 
 	protected
 

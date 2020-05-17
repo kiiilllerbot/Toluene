@@ -18,6 +18,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener', '~> 1.7'
   gem 'web-console', '>= 3.3.0'
 end
 
@@ -35,3 +36,4 @@ gem 'jquery-rails', '~> 4.4'
 gem 'bootstrap', '~> 4.4', '>= 4.4.1'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'devise', '~> 4.7', '>= 4.7.1'
+gem 'devise_invitable', '~> 2.0', '>= 2.0.2'
