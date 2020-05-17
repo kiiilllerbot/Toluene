@@ -1,0 +1,52 @@
+<%= simple_form_for(@project) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <%= f.input :title %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :category,collection:['Web Application', 'Desktop GUI Based Application', 'Desktop CLI Application', 'Android Application', 'iOS Application', 'Cross-Platform Mobile Application'], prompt:'Select Project Category' %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :size,collection:['Small', 'Medium', 'Large'], prompt:'Select Project Size' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <%= f.input :budget,label:'Budget (MYR)' %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :image_link ,label:'Project Cover Image URL'%>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :deadline, value: Date.current+1 %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <%= f.input :client_name,label:'Client Name' %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :client_email,label:'Client Email' %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :status,collection:['Active', 'Finished', 'Postponed'], prompt:'Select Current Status' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <%= f.input :description, as: :trix_editor %>
+      <%= f.association :user ,as: :hidden %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class=>"btn btn-success btn-md" %>
+    <%= link_to 'Back', root_path ,:class=>"btn btn-info btn-md" %>
+  </div>
+<% end %>

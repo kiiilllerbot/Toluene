@@ -1,4 +1,9 @@
 @import "bootstrap";
+@import "trix";
+
+html,body{
+  margin-top: 40px;
+}
 
 // Customizing Form-Control Class
 
@@ -48,4 +53,34 @@
     }
   }
 
+  abbr{
+    display: none;
+  }
+
+.trix-content{
+    height: 250px;
+    overflow-y: auto;
+}
+
+// Hide The Attachment Icon On From Trix Editor
+.trix-button-group.trix-button-group--file-tools{display: none;}
+
+.fa-spinner, .fa-check-circle{ color: #00E676}
+
+.jumbotron{ background-color: #546E7A !important}
+
+.white-bordered{ border: 2px solid #fff}
+
+.box-shadow{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
   .fa-user{ color: #212121}
+
+#all-projects{
+  .card{
+    img{
+      height: 280px;
+    }
+  }
+  }

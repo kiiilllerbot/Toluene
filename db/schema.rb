@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_151414) do
+ActiveRecord::Schema.define(version: 2020_05_17_154927) do
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "size"
+    t.string "category"
+    t.string "budget"
+    t.string "client_name"
+    t.string "client_email"
+    t.string "image_link"
+    t.date "deadline"
+    t.string "status", default: "Active"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
