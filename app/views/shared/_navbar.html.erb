@@ -31,6 +31,9 @@
         <li class="nav-item <%= yield(:work_active) %>">
             <%= link_to "Submissions", works_path, :class=>"nav-link" %>
         </li>
+        <li class="nav-item <%= yield(:todo_active) %>">
+            <%= link_to "Todos", todos_path, :class=>"nav-link" %>
+        </li>
       </ul>
       <!---------------- / Navigation Links --------------->
 

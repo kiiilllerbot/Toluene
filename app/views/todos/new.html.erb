@@ -1,0 +1,23 @@
+<% content_for :title do %>
+  New Todo
+<% end %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-5">
+      <div class="card">
+        <div class="card-header">
+          <h2>
+            <%= link_to todos_path do %>
+              <i class="fas fa-angle-left h2 mr-2"></i>
+            <% end %>
+            Add Todo
+          </h2>
+        </div>
+      	<div class="card-body">
+      		<%= render 'form', todo: @todo %>
+      	</div>
+			</div>
+		</div>
+	</div>
+</div>

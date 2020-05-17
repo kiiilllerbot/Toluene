@@ -1,0 +1,52 @@
+<% content_for :title do %>
+  All Todos
+<% end %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-5">
+      <div class="card">
+        <div class="card-header">
+          <h2>
+          <%= link_to root_path do %>
+            <i class="fas fa-angle-left h2 mr-2"></i>
+          <% end %>
+          Todos
+          </h2>
+        </div>
+        <% if current_user.todos.blank? %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            YOU DON'T HAVE ANY TODO YET
+          </li>
+        </ul>
+        <% else %>
+        <ul class="list-group list-group-flush">
+          <% current_user.todos.each do |todo| %>
+            <li class="list-group-item">
+              <% if todo.status == 'Active' %>
+                <%= todo.name %>
+              <% elsif todo.status == 'Finished' %>
+                <s><%= todo.name %></s>
+              <% end %>
+              <div class="float-right">
+                  <%= link_to edit_todo_path(todo) do %>
+                    <i class="fas fa-pencil-ruler mr-2"></i>
+                  <% end %>
+
+                  <%= link_to todo, method: :delete do %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+      <br>
+      <%= link_to new_todo_path,:class=>"btn btn-success btn-sm btn-block", style:"margin-top: -2px" do %>
+        <i class="fas fa-plus-circle"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

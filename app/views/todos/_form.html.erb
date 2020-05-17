@@ -1,0 +1,23 @@
+
+<%= simple_form_for(@todo) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-group row">
+    <div class="col-sm-8">
+      <%= f.input :name, label: false, placeholder: 'What are you going to do?' %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :status, collection: ['Active', 'Finished'], label: false, prompt:'Status'%>
+      <%= f.association :user ,as: :hidden %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+
+    <%= button_tag type: 'submit', class: "btn btn-success btn-sm btn-block" do %>
+      <i class="fas fa-check"></i>
+    <% end %>
+
+  </div>
+<% end %>
