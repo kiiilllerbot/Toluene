@@ -8,6 +8,8 @@ class IssuesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @issue.comments.order('created_at DESC')
   end
 
   def new

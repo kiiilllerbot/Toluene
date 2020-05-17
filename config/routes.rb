@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :issues
+  resources :issues do
+    resources :comments
+  end
+  
   resources :tasks
   resources :projects
   devise_for :users, :controllers => {:registrations => "registrations"}

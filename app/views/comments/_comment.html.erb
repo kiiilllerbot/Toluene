@@ -1,0 +1,32 @@
+<div id="comment-<%= comment.id %>">
+    <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-sm-10">
+                  <div class="card mt-2" style="border-left: 4px solid #00C853">
+                    <div class="card-body">
+                        <div class="text-left">
+                            <div class="float-right">
+                                <% if current_user && current_user == comment.user || current_user.role=='Manager' %>
+                                    <%= link_to "Delete", issue_comment_path(@issue, comment), method: :delete, remote: true,:class=>"btn btn-sm btn-danger"%>
+                                <% end %>
+                            </div>
+                            <% if comment.user.image_link? %>
+                                <%= image_tag(comment.user.image_link,:size=>"28x28", :class=>"rounded mr-2") %>
+                            <% end %>
+                            <strong>
+                                <% if comment.user.name? %>
+                                    <%= comment.user.name %>
+                                <% else %>
+                                    <%= comment.user.email %>
+                                <% end %>
+                            </strong>
+                            <br>
+                            <p class="text-justify mt-3"><%= sanitize comment.body %></p>
+                            <small class="text-muted"><i class="far fa-clock mr-1"></i> <%= time_ago_in_words(comment.created_at) %> ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

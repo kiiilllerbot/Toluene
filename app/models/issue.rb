@@ -2,6 +2,7 @@ class Issue < ApplicationRecord
 
   belongs_to :user
   belongs_to :task
+  has_many :comments, dependent: :destroy
 
   scope :active, -> {
   	where(:status =>'Active')
