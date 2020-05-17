@@ -1,0 +1,20 @@
+<% content_for :title do %>
+  Saved Note
+<% end %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-8 col-lg-8" style="margin-top: 5vh">
+        <div class="card">
+          <div class="card-body">
+              <p class="text-muted"><%= @note.created_at.strftime("%B, %d, %Y")%></p>
+              <p class="text-justify"><%= sanitize @note.body %></p>
+              <%= link_to "Back", notes_path, :class=>"btn btn-sm btn-secondary"%>
+              <%= link_to "Edit", edit_note_path, :class=>"btn btn-sm btn-info"%>
+              <%= link_to "Delete", note_path, method: :delete, :class=>"btn btn-sm btn-danger"%>
+              <%= link_to "Create Another", new_note_path, :class=>"btn btn-sm btn-success"%>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
