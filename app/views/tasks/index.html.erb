@@ -1,0 +1,196 @@
+<% content_for :title do %>
+  Tasks
+<% end %>
+
+<% provide(:task_active, 'active') %>
+
+<div class="container-fluid" id="all-projects" style="padding-top: 1vh">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 pb-5">
+      <div class="float-right">
+        
+        <%= form_tag tasks_path, method: :get do %>
+          <div class="input-group">
+          <i class="fas fa-search mr-3 mt-2"></i>
+            <%= text_field_tag :search, params[:search], :class=>'form-control', placeholder: 'Search tasks  '%>
+          </div>
+        <% end %>
+      </div>
+      <ul class="nav nav-pills">
+
+      <li>
+        <%= link_to root_path, :class=>"btn btn-secondary btn-md" do %>
+          <i class="fas fa-angle-left"></i>
+        <% end %>
+       </li>
+
+        <li class="active"><a data-toggle="pill" href="#all" class="btn btn-primary btn-md active">
+          All 
+            <div class="badge badge-info ml-1">
+              <%= @tasks.count %>
+            </div>
+         </a>
+       </li>
+
+      <li>
+        <a data-toggle="pill" href="#running" class="btn btn-primary btn-md">
+        Active
+          <div class="badge badge-info ml-1">
+              <%= @tasks.active.count %>
+          </div>
+        </a>
+      </li>
+
+        <li>
+          <a data-toggle="pill" href="#completed" class="btn btn-primary btn-md">
+          Completed
+            <div class="badge badge-info ml-1">
+                <%= @tasks.finished.count %>
+            </div>
+        </a>
+        </li>
+
+        <li>
+          <a data-toggle="pill" href="#mine" class="btn btn-primary btn-md">
+          My Tasks
+            <div class="badge badge-info ml-1">
+                <%= current_user.tasks.count %>
+            </div>
+        </a>
+        </li>
+
+      <li>
+        <%= link_to new_task_path, :class=>"btn btn-primary btn-md" do %>
+            <i class="fas fa-plus-circle"></i>
+        <% end %>
+      </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 pb-5">
+      <div class="tab-content">
+        <div id="all" class="tab-pane active">
+          <div class="row justify-content-center">
+            <% if !@tasks.blank? %>
+              <% @tasks.each do |task| %>
+                <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
+                    <div class="card">
+                      <div class="card-body">
+                        <p><%= link_to truncate(task.title, length: 53), task,:class=>"text-dark link" %></p>
+                        <hr class="my-1">
+                        <p class="text-muted">Created at <%= task.created_at.strftime("%B, %d, %Y")%></p>
+                      </div>
+                    </div>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="jumbotron">
+                <h2 class="display-4">No Task Found! <i class="far fa-sad-tear"></i></h2>
+                <hr class="my-4">
+                <p class="lead">Seems like no task haven't been created yet</p>
+                <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm" %>
+                <span>Or</span>
+                <%= link_to "Create New", new_task_path, :class=>"btn btn-success btn-sm" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div id="running" class="tab-pane fade in">
+          <div class="row justify-content-center">
+            <% if !@tasks.active.blank? %>
+              <% @tasks.active.each do |task| %>
+                <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
+                    <div class="card">
+                      <div class="card-body">
+                        <p><%= link_to truncate(task.title, length: 53), task,:class=>"text-dark link" %></p>
+                        <hr class="my-1">
+                        <p class="text-muted">Created at <%= task.created_at.strftime("%B, %d, %Y")%></p>
+                      </div>
+                    </div>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="jumbotron">
+                <h2 class="display-4">No Active Task Found! <i class="far fa-sad-tear"></i></h2>
+                <hr class="my-4">
+                <p class="lead">Seems like no task is running currently</p>
+                <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm" %>
+                <span>Or</span>
+                <%= link_to "Create New", new_task_path, :class=>"btn btn-success btn-sm" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div id="completed" class="tab-pane fade in">
+          <div class="row justify-content-center">
+            <% if !@tasks.finished.blank? %>
+              <% @tasks.finished.each do |task| %>
+                <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
+                    <div class="card">
+                      <div class="card-body">
+                        <p><%= link_to truncate(task.title, length: 53), task,:class=>"text-dark link" %></p>
+                        <hr class="my-1">
+                        <p class="text-muted">Created at <%= task.created_at.strftime("%B, %d, %Y")%></p>
+                      </div>
+                    </div>
+                </div>
+              <% end %>
+            <% else %>
+            <div class="jumbotron">
+              <h2 class="display-4">No Finished Task Found! <i class="far fa-sad-tear"></i></h2>
+              <hr class="my-4">
+              <p class="lead">Seems like no task haven't been finished yet</p>
+              <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm" %>
+              <span>Or</span>
+              <%= link_to "Create New", new_task_path, :class=>"btn btn-success btn-sm" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div id="mine" class="tab-pane fade in">
+          <div class="row justify-content-center">
+            <% if !current_user.tasks.blank? %>
+              <% current_user.tasks.each do |task| %>
+                <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
+                    <div class="card">
+                      <div class="card-body">
+                        <p><%= link_to truncate(task.title, length: 53), task,:class=>"text-dark link" %></p>
+                        <hr class="my-1">
+                        <p class="text-muted">Created at <%= task.created_at.strftime("%B, %d, %Y")%></p>
+                      </div>
+                    </div>
+                </div>
+              <% end %>
+            <% else %>
+            <div class="jumbotron">
+              <h2 class="display-4">You don't have any task! <i class="far fa-sad-tear"></i></h2>
+              <hr class="my-4">
+              <p class="lead">Seems like manager haven't alloted you any task yet</p>
+              <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm" %>
+              <span>Or</span>
+              <%= link_to "Create New", new_task_path, :class=>"btn btn-success btn-sm" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-3 col-lg-3 text-center">
+        <nav aria-label="Page navigation example">
+              <ul class="pagination pg-success justify-content-center">
+                        <%= will_paginate(@tasks,
+                        :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer,
+                        inner_window: 1,
+                        outer_window: 0,
+                        class: 'text-center') %>
+              </ul>
+        </nav>
+      </div>
+    </div>
+  </div>

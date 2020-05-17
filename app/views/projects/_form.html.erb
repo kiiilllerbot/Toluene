@@ -22,7 +22,7 @@
       <%= f.input :image_link ,label:'Project Cover Image URL'%>
     </div>
     <div class="col-sm-4">
-      <%= f.input :deadline, value: Date.current+1 %>
+      <%= f.input :deadline , :start_year => Date.current.year, :end_year=> 2025, :selected => Date.today %>
     </div>
   </div>
 

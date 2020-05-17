@@ -1,0 +1,17 @@
+<% content_for :title do %>
+  Edit Task <%= @task.title %>
+<% end %>
+
+<div class="project-new-cover"></div>
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-sm-12 col-md-10 col-lg-10" style="margin-top: 4vh">
+			<div class="card">
+				<div class="card-body">
+					<h3 class="pb-1"><i class="fas fa-folder-plus"></i> Edit Task <strong><%= @task.title %></strong></h3>
+					<%= render 'form', project: @project %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,36 @@
+<%= simple_form_for(@task) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <%= f.input :title %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.association :project, prompt:'Select Project' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <%= f.association :user, label: 'Developer', prompt:'Assign to Developer'  %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :deadline , :start_year => Date.current.year, :end_year=> 2025, :selected => Date.today %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :status, collection: ['Active', 'Finished'], prompt:'Select Current Status' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <%= f.input :description,as: :trix_editor %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class=>"btn btn-success btn-sm" %>
+    <%= link_to 'Back', tasks_path ,:class=>"btn btn-info btn-sm" %>
+  </div>
+<% end %>
