@@ -1,0 +1,124 @@
+<% content_for :title do %>
+  Update Your Account
+<% end %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-8" style="margin-top: 10vh">
+      <div class="card pt-2">
+        <div class="card-body">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <%= f.input :name ,label: false, placeholder: 'Name' %>
+              </div>
+              <div class="col-sm-4">
+                <%= f.input :title,label: false, placeholder: 'Title' %>
+              </div>
+              <div class="col-sm-4">
+                <%= f.input :email,label: false, placeholder: 'Email'%>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <%= f.input :address ,label: false, placeholder: 'Address'%>
+              </div>
+              <div class="col-sm-4">
+                <%= f.input :image_link ,label: false, placeholder: 'Image URL'%>
+              </div>
+              <div class="col-sm-4">
+                <%= f.input :gender, collection: ['Male', 'Female'] ,label: false, prompt: 'Select Your Gender' %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <%= f.input :mobile_number ,label: false, placeholder: 'Mobile Number'%>
+              </div>
+              <div class="col-sm-4">
+                <%= f.input :fb_link ,label: false, placeholder: 'Facebook Profile URL'%>
+              </div>
+              <div class="col-sm-4">
+                <%= f.input :ig_link ,label: false, placeholder: 'Instagram Profile URL'%>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <%= f.input :twitter_link,label: false, placeholder: 'Twitter Profile URL' %>
+              </div>
+              <div class="col-sm-4">
+                <%= f.input :in_link ,label: false, placeholder: 'LinkedIn Profile URL' %>
+              </div>
+              <div class="col-sm-4">
+                <%= f.input :github_link ,label: false, placeholder: 'GitHub Profile URL' %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <%= f.input :bio, label: false, placeholder: 'Tell something about yourself', input_html:{rows: 5} %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <%= f.input :password,
+                          label: false,
+                          placeholder: 'Password',
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+              </div>
+              <div class="col-sm-4">
+                <%= f.input :password_confirmation,
+                          label: false,
+                          placeholder: 'Password Confirmation',
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+              </div>
+              <div class="col-sm-4">
+                <%= f.input :current_password,
+                          label: false,
+                          placeholder: 'Current Password',
+                          required: true,
+                          input_html: { autocomplete: "current-password" } %>
+              </div>
+            </div>
+            
+            <div class="form-actions">
+              <%= link_to "Back", root_path, :class=>"btn-sm btn btn-info" %>
+              <%= f.button :submit, "Update",:class=>"btn-sm btn btn-success" %>
+              <%= link_to "Delete Account", registration_path(resource_name), data: { toggle: 'modal',target:'#large-Modal' },:class=>"btn-sm btn btn-danger waves-effect" %>
+            </div>
+
+            <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Account Deletion</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <h5>Are you sure to delete your account?</h5>
+                    <br>
+                    <p>If you have come here unwillingly, please press <strong>CLOSE</strong>. If you really want to delete your account then press the DELETE button. Keep in mind! Your account can not be restored once you delete your account.</p>
+                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default waves-effect " data-dismiss="modal">Close</button>
+                    <%= link_to "Delete Account", registration_path(resource_name), data: { toggle: 'modal',target:'#large-Modal' },method: :delete,:class=>"btn btn-sm btn-danger waves-effect waves-light" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
