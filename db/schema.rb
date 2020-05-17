@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_193343) do
+ActiveRecord::Schema.define(version: 2020_05_17_205218) do
+
+  create_table "issues", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "status", default: "Active"
+    t.integer "user_id"
+    t.integer "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_issues_on_task_id"
+    t.index ["user_id"], name: "index_issues_on_user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
