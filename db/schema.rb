@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_212630) do
+ActiveRecord::Schema.define(version: 2020_05_17_214245) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -100,6 +100,17 @@ ActiveRecord::Schema.define(version: 2020_05_17_212630) do
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
     t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "user_id"
+    t.integer "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_works_on_task_id"
+    t.index ["user_id"], name: "index_works_on_user_id"
   end
 
 end

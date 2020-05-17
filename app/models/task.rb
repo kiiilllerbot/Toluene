@@ -2,6 +2,7 @@ class Task < ApplicationRecord
 
   belongs_to :user
   belongs_to :project
+  has_many :works, dependent: :destroy
 
   scope :active, -> {
   	where(:status =>'Active')

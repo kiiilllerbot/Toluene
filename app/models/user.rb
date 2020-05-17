@@ -5,5 +5,6 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :issues
   has_many :comments
+  has_many :works
   
 end
