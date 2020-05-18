@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
     end
     super
   end
+
+  include PublicActivity::StoreController
   
 
 	protected

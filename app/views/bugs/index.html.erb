@@ -1,7 +1,10 @@
 <% content_for :title do %>
   All Bug Requests
 <% end %>
+
 <% provide(:bug_active, 'active') %>
+<%= render 'shared/navbar' %>
+
 <% if @bugs.blank? %>
   <div class="container-fluid">
     <div class="row justify-content-center">

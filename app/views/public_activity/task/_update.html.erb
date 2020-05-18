@@ -1,0 +1,21 @@
+<div id="activity">
+	<div class="card mb-2">
+		<div class="card-body">
+			<%= link_to root_path do %>
+				<i class="fas fa-arrow-left link mr-3"></i>
+			<% end %>
+
+			<span><i class="fas fa-underline mr-1"></i></span>
+
+			<% if activity.trackable %>
+					<span class="mr-1"><%= activity.trackable.updated_at.strftime("%B,%d,%Y")%></span>
+					<span class="mr-1"><%= activity.trackable.updated_at.strftime("%H:%M")%></span>
+					<span class="mr-1">Updated a task</span>
+					<strong><%= link_to activity.trackable.title, activity.trackable %></strong>
+			<% else %>
+					<span class="mr-1">Updated a task</span>
+					<span>which has since been removed</span>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<% content_for :title do %>
+  Recent Activiities
+<% end %>
+
+<% provide(:activity_active, 'active') %>
+<%= render 'shared/navbar' %>
+
+<div class="container-fluid" style="margin-top: 10vh">
+	<% if @activities.blank? %>
+		<div class="row justify-content-center">
+	    <div class="col-sm-8 col-md-8 col-lg-8">
+	      <div class="card">
+	      	<div class="card-body">
+	      		<h1 class="display-6">Aww! No Activites found <i class="far fa-sad-tear"></i></h1>
+	        	<p class="lead">Seems like there is no activites have committed yet.</p>
+	        	<hr class="my-4">
+	        	<%= link_to "Go Back", root_path, :class=>"btn btn-success btn-md" %>
+	      	</div>
+	      </div>
+	    </div>
+	   </div>
+	<% else %>
+	  <div class="row justify-content-center">
+	    <div class="col-sm-12 col-md-8 col-lg-8" style="margin-top: 2vh">
+	    	<%= render_activities(@activities) %>
+	    	<%= link_to "Back", root_path, :class=>"btn btn-success btn-sm btn-block mt-2 mb-2"%>
+	    </div>
+	   </div>
+	<% end %>
+</div>

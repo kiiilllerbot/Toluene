@@ -4,7 +4,7 @@ class BugsController < ApplicationController
   before_action :set_bug, only: [:show, :destroy]
 
   def index
-    @bugs = Bug.all
+    @bugs = Bug.all.order('created_at DESC')
   end
 
   def show

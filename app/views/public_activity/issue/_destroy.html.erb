@@ -1,0 +1,19 @@
+<div id="activity">
+	<div class="card mb-2">
+		<div class="card-body">
+			<%= link_to root_path do %>
+				<i class="fas fa-arrow-left link mr-3"></i>
+			<% end %>
+
+			<span><i class="fas fa-trash-restore mr-1"></i></span>
+
+			<% if activity.trackable %>
+					<span class="mr-1">Deleted an issue</span>
+					<strong><%= link_to activity.trackable.title, activity.trackable %></strong>
+			<% else %>
+					<span class="mr-1">Deleted an issue</span>
+					<span>which has since been removed</span>
+			<% end %>
+		</div>
+	</div>
+</div>

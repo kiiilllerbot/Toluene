@@ -1,0 +1,23 @@
+<div id="activity">
+	<div class="card mb-2">
+		<div class="card-body mb-2">
+				<%= link_to root_path do %>
+				<i class="fas fa-arrow-left link mr-3"></i>
+				<% end %>
+
+				<span><i class="fas fa-pencil-alt mr-1"></i></span>
+
+				<% if activity.trackable %>
+
+				<span class="mr-1"><%= activity.trackable.created_at.strftime("%B,%d,%Y")%></span>
+				<span class="mr-1"><%= activity.trackable.created_at.strftime("%H:%M")%></span>
+
+				<span>Created a new project</span>
+						<strong><%= link_to activity.trackable.title, activity.trackable %></strong>
+				<% else %>
+					<span class="mr-1">Created a new project</span>
+					<span class="mr-1">which has since been removed</span>
+				<% end %>
+		</div>
+	</div>
+</div>

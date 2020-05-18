@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'activities/index'
   resources :bugs
   resources :notes
   mount Notifications::Engine => "/notifications"
@@ -18,7 +19,10 @@ Rails.application.routes.draw do
   
   devise_for :users, :controllers => {:registrations => "registrations"}
   
-	get 'dashboard', to: 'dashboard#index'
+  get 'dashboard', to: 'dashboard#index'
+
+  get 'activities', to: 'activities#index', as: :activities
+  
 
 	# Root Page
   root 'dashboard#index'

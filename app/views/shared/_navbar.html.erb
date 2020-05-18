@@ -39,6 +39,9 @@
         <li class="nav-item <%= yield(:team_active) %>">
             <%= link_to "Team", team_path, :class=>"nav-link" %>
         </li>
+        <li class="nav-item <%= yield(:activity_active) %>">
+            <%= link_to "Activities", activities_path, :class=>"nav-link" %>
+        </li>
         <li class="nav-item <%= yield(:work_active) %>">
             <%= link_to "Submissions", works_path, :class=>"nav-link" %>
         </li>
