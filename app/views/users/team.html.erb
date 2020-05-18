@@ -1,0 +1,77 @@
+<% content_for :title do %>
+  Team
+<% end %>
+<% provide(:team_active, 'active') %>
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-sm-10" style="margin-top: 12vh">
+			<div class="card">
+				<div class="card-header">
+					<h5>
+						<%= image_tag('Logo.svg',:size=>"32x32",:class=>"mr-1")%>
+						Toluene Development Team Stats
+					</h5>
+				</div>
+					<div class="card-block table-border-style">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr class="border-bottom-danger">
+										<th>#</th>
+										<th>Picture</th>
+										<th>Name</th>
+										<th>Email</th>
+										<th>Role</th>
+										<th>Tasks</th>
+										<th>Issues</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<% @users.each do |user| %>
+										<tr class="border-bottom-primary">
+											<td><%= user.id %></td>
+
+											<% if user.image_link? %>
+												<td><%= image_tag(user.image_link,:size=>"32x32",:class=>"rounded") %></td>
+											<% else %>
+												<td><%= image_tag("avatar.png",:size=>"32x32",:class=>"rounded") %></td>
+											<% end %>
+
+											<% if user.name? %>
+												<td><%= link_to user.name, profile_path(user) %></td>
+											<% else %>
+												<td>Nill</td>
+											<% end %>
+
+											<td><%= link_to user.email, profile_path(user) %></td>
+
+											<% if user.role == 'Manager' %>
+												<td>Project Manager</td>
+											<% else %>
+												<td>Developer</td>
+											<% end %>
+
+											<td><%= user.tasks.count %></td>
+
+											<td><%= user.issues.count %></td>
+
+											<% if user.account_active? %>
+												<td><div class="badge badge-success">Active</div></td>
+											<% else %>
+												<td><div class="badge badge-secondary">In-Active</div></td>
+											<% end %>
+
+										</tr>
+									<% end %>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<%= link_to "Back To Dashboard", root_path, :class=>"btn btn-success btn-sm ml-0"%>
+				</div>
+		</div>
+	</div>
+</div>

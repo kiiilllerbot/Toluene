@@ -2,7 +2,7 @@
 <% content_for :title do %>
   <%= @task.title %>
 <% end %>
-
+<% provide(:task_active, 'active') %>
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-10" style="margin-top: 15vh">
@@ -24,11 +24,11 @@
               <tbody>
                 <tr>
                   <td><%= @task.id %></td>
-                  <td><%= @task.project.title %></td>
+                  <td><%= link_to @task.project.title, project_path(@task.project) %></td>
                   <% if @task.user.name? %>
-                    <td><%= @task.user.name %></td>
+                    <td><%= link_to @task.user.name, profile_path(@task.user) %></td>
                   <% else %>
-                    <td><%=  @task.userr.email %></td>
+                    <td><%=  link_to @task.userr.email, profile_path(@task.user) %></td>
                   <% end %>
                   <td><%= @task.deadline %></td>
                   <td>
@@ -51,7 +51,7 @@
             </table>
           </div>
           
-          <%= link_to tasks_path,:class=>"btn btn-sm btn-primary waves-effect waves-light" do %>
+          <%= link_to tasks_path,:class=>"btn btn-sm btn-primary waves-effect waves-light ml-0" do %>
             <i class="fas fa-angle-left"></i>
           <% end %>
           

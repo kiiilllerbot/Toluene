@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-sm-8" style="margin-top: 10vh">
+    <div class="col-sm-8" style="margin-top: 12vh">
       <div class="card pt-2">
         <div class="card-body">
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -89,7 +89,7 @@
             </div>
             
             <div class="form-actions">
-              <%= link_to "Back", root_path, :class=>"btn-sm btn btn-info" %>
+              <%= link_to "Back", root_path, :class=>"btn-sm btn btn-info ml-0" %>
               <%= f.button :submit, "Update",:class=>"btn-sm btn btn-success" %>
               <%= link_to "Delete Account", registration_path(resource_name), data: { toggle: 'modal',target:'#large-Modal' },:class=>"btn-sm btn btn-danger waves-effect" %>
             </div>

@@ -1,7 +1,7 @@
 <% content_for :title do %>
   Edit Task <%= @task.title %>
 <% end %>
-
+<% provide(:task_active, 'active') %>
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-sm-12 col-md-10 col-lg-10" style="margin-top: 14vh">

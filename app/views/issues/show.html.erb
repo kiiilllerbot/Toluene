@@ -1,7 +1,7 @@
 <% content_for :title do %>
   <%= @issue.title %>
 <% end %>
-
+<% provide(:issue_active, 'active') %>
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-sm-10" style="margin-top: 15vh">
@@ -48,7 +48,7 @@
             </table>
           </div>
           
-          <%= link_to issues_path,:class=>"btn btn-sm btn-primary waves-effect waves-light" do %>
+          <%= link_to issues_path,:class=>"btn btn-sm btn-primary waves-effect waves-light ml-0" do %>
             <i class="fas fa-angle-left"></i>
           <% end %>
 

@@ -81,7 +81,15 @@
                       <div class="card-body">
                         <p><%= link_to truncate(task.title, length: 53), task,:class=>"text-dark link" %></p>
                         <hr class="my-1">
-                        <p class="text-muted">Created at <%= task.created_at.strftime("%B, %d, %Y")%></p>
+                        <small class="text-muted">
+                        Assigned to
+                        <% if task.user.name? %>
+                          <%= link_to task.user.name, profile_path(task.user) %>
+                        <% else %>
+                          <%= link_to task.user.email, profile_path(task.email) %>
+                        <% end %>
+                        Created at <%= task.created_at.strftime("%B, %d, %Y")%>
+                        </small>
                       </div>
                     </div>
                 </div>

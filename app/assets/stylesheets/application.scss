@@ -2,7 +2,6 @@
 @import "trix";
 
 // Customizing Form-Control Class
-
 .form-control{
 	border-radius: 0;
 }
@@ -90,4 +89,15 @@
     text-decoration: none;
     color: #263238;
     opacity: 1;
+}
+.navbar.navbar-light .navbar-nav .nav-item.active>.nav-link{font-weight: 500;border-bottom: 2px solid #2962FF;}
+.navbar.navbar-light .navbar-nav .nav-item>.nav-link{font-weight: 500;}
+
+#navbarSupportedContent > ul.navbar-nav.mx-auto > li.nav-item{
+  font-weight: 500;
+}
+
+#navbarSupportedContent > ul.navbar-nav.mx-auto > li.nav-item.active > a{
+  font-weight: 500;
+  border-bottom: 2px solid #2962FF;
 }

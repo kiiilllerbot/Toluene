@@ -24,11 +24,11 @@
                 <tr>
                   <td><%= @work.id %></td>
                   <td><%= @work.title %></td>
-                  <td><%= @work.task.title %></td>
+                  <td><%= link_to @work.task.title, task_path(@work.task) %></td>
                   <% if @work.user.name? %>
-                    <td><%= @work.user.name %></td>
+                    <td><%= link_to @work.user.name, profile_path(@work.user) %></td>
                   <% else %>
-                    <td><%= @work.user.email %></td>
+                    <td><%= link_to @work.user.email, profile_path(@work.user) %></td>
                   <% end %>
                   <td>
                     <% if @work.task.status == 'Active' %>
@@ -50,7 +50,7 @@
             </table>
           </div>
           
-          <%= link_to works_path,:class=>"btn btn-sm btn-primary waves-effect waves-light" do %>
+          <%= link_to works_path,:class=>"btn btn-sm btn-primary waves-effect waves-light ml-0" do %>
             <i class="fas fa-angle-left"></i>
           <% end %>
 

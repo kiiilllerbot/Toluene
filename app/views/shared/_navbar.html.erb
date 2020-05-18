@@ -34,6 +34,9 @@
         <li class="nav-item <%= yield(:todo_active) %>">
             <%= link_to "Todos", todos_path, :class=>"nav-link" %>
         </li>
+        <li class="nav-item <%= yield(:team_active) %>">
+            <%= link_to "Team", team_path, :class=>"nav-link" %>
+        </li>
         <li class="nav-item <%= yield(:work_active) %>">
             <%= link_to "Submissions", works_path, :class=>"nav-link" %>
         </li>
@@ -76,6 +79,9 @@
             <% end %>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          	<%= link_to profile_path(current_user) do %>
+							<i class="far fa-user-circle mr-2"></i> Profile
+						<% end %>
             <%= link_to edit_user_registration_path, :class=>"dropdown-item" do %>
               <i class="fas fa-wrench mr-2"></i> Account Settings
             <% end %>

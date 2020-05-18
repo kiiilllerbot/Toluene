@@ -19,7 +19,7 @@
       <%= f.input :budget,label:'Budget (MYR)' %>
     </div>
     <div class="col-sm-4">
-      <%= f.input :image_link ,label:'Project Cover Image URL'%>
+      <%= f.input :image_link ,label:'Cover Image URL'%>
     </div>
     <div class="col-sm-4">
       <%= f.input :deadline , :start_year => Date.current.year, :end_year=> 2025, :selected => Date.today %>
@@ -46,7 +46,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, :class=>"btn btn-success btn-md" %>
-    <%= link_to 'Back', root_path ,:class=>"btn btn-info btn-md" %>
+    <%= f.button :submit, :class=>"btn btn-success btn-sm ml-0" %>
+    <%= link_to 'Back', root_path ,:class=>"btn btn-info btn-sm" %>
   </div>
 <% end %>
