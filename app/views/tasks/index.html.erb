@@ -59,12 +59,14 @@
             </div>
         </a>
         </li>
-
-      <li>
-        <%= link_to new_task_path, :class=>"btn btn-primary btn-md" do %>
-            <i class="fas fa-plus-circle"></i>
+        
+        <% if can? :create, @task%>
+          <li>
+            <%= link_to new_task_path, :class=>"btn btn-primary btn-md" do %>
+                <i class="fas fa-plus-circle"></i>
+            <% end %>
+          </li>
         <% end %>
-      </li>
 
       </ul>
     </div>

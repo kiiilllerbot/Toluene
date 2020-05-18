@@ -59,18 +59,24 @@
           <%= link_to projects_path,:class=>"btn btn-primary btn-sm waves-effect waves-light" do %>
             <i class="fas fa-angle-left"></i>
           <% end %>
-          
+
+          <% if can? :update, @project %>
             <%= link_to edit_project_path(@project),:class=>"btn btn-sm btn-success waves-effect waves-light" do %>
               <i class="fas fa-pen-nib"></i>
             <% end %>
+          <% end %>
           
+          <% if can? :destroy, @project %>
             <%= link_to project_path, data:{toggle: 'modal',target:'#large-Modal'} ,:class=>"btn btn-sm btn-danger waves-effect waves-light" do %>
               <i class="fas fa-trash"></i>
             <% end %>
+          <% end %>
 
+          <% if can? :create, @project %>
             <%= link_to new_project_path,:class=>"btn btn-sm btn-info waves-effect waves-light" do %>
               <i class="fas fa-angle-right"></i>
             <% end %>
+          <% end %>
 
             <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
               <div class="modal-dialog modal-lg" role="document">

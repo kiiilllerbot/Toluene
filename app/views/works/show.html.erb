@@ -56,10 +56,11 @@
           <%= link_to works_path,:class=>"btn btn-sm btn-primary waves-effect waves-light ml-0" do %>
             <i class="fas fa-angle-left"></i>
           <% end %>
-
+          <% if can? :destroy, @work %>
             <%= link_to work_path, data:{toggle: 'modal',target:'#large-Modal'} ,:class=>"btn btn-sm btn-danger waves-effect waves-light" do %>
               <i class="fas fa-trash"></i>
             <% end %>
+          <% end %>
 
           <%= link_to new_work_path,:class=>"btn btn-sm btn-info waves-effect waves-light" do %>
             <i class="fas fa-angle-right"></i>

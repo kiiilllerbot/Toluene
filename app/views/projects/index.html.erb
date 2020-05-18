@@ -60,12 +60,13 @@
             </div>
         </a>
         </li>
-
-      <li>
-        <%= link_to new_project_path, :class=>"btn btn-primary btn-md" do %>
-            <i class="fas fa-plus-circle"></i>
-        <% end %>
-      </li>
+      <% if can? :create, @project %>
+        <li>
+          <%= link_to new_project_path, :class=>"btn btn-primary btn-md" do %>
+              <i class="fas fa-plus-circle"></i>
+          <% end %>
+        </li>
+      <% end %>
 
       </ul>
     </div>

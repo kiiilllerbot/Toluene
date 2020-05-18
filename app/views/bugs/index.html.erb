@@ -38,16 +38,39 @@
                 <% @bugs.each do |bug| %>
                   <tr>
                     <td><%= link_to bug.title, bug %></td>
+
                     <% if bug.user.name? %>
-                      <td><%= bug.user.name %></td>
+                      <td><%= link_to bug.user.name, profile_path(bug.user) %></td>
                     <% else %>
-                      <td><%= bug.user.email %></td>
+                      <td><%= link_to bug.user.email, profile_path(bug.user) %></td>
                     <% end %>
 
                     <td><%= link_to 'Show', bug %></td>
 
-                      <td><%= link_to 'Destroy', bug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+                    <% if can? :destroy, @bug %>
+                      <td><%= link_to 'Destroy', bug, data:{toggle: 'modal',target:'#large-Modal'} %></td>
+                    <% end %>
+                    <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
+                      <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Issue Deletion</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <h5>Are you sure to delete this Bug Request?</h5>
+                            <br>
+                            <p>Request will be completely deleted, it can not be undone</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-default waves-effect " data-dismiss="modal">Close</button>
+                            <%= link_to "Delete Request", bug, data: { toggle: 'modal',target:'#large-Modal' },method: :delete,:class=>"btn btn-danger btn-sm waves-effect waves-light" %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </tr>
                 <% end %>
               </tbody>

@@ -10,9 +10,11 @@
 		<div class="col-sm-12 col-md-8 col-lg-8" style="margin-top: 17vh">
 			<div class="card">
 				<div class="card-body">
+				<% if can? :destroy, @bug %>
 					<div class="float-right">
 						<%= link_to "Delete", bug_path,:class=>"btn btn-sm btn-danger", method: :delete, data: {confirm: 'Are you sure?' }%>
 					</div>
+				<% end %>
 					<p><%= @bug.title %></p>
 					<hr class="my-1">
 					<p class="text-justify"><%= sanitize @bug.body %></p>
@@ -20,9 +22,9 @@
 					<small class="text-muted">Reported by
 
 					<% if @bug.user.name? %>
-						<%= @bug.user.name %>
+						<%= link_to @bug.user.name, profile_path(@bug.user) %>
 					<% else %>
-						<%= @bug.user.email %>
+						<%= link_to @bug.user.email, profile_path(@bug.user) %>
 					<% end %>
 					| <%= @bug.created_at.strftime("%B, %d, %Y")%>
 					</small>

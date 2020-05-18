@@ -58,17 +58,23 @@
             <i class="fas fa-angle-left"></i>
           <% end %>
           
+          <% if can? :update, @task%>
             <%= link_to edit_task_path(@task),:class=>"btn btn-sm btn-success waves-effect waves-light" do %>
               <i class="fas fa-pen-nib"></i>
             <% end %>
+          <% end %>
           
+          <% if can? :destroy, @task%>
             <%= link_to task_path, data:{toggle: 'modal',target:'#large-Modal'} ,:class=>"btn btn-sm btn-danger waves-effect waves-light" do %>
               <i class="fas fa-trash"></i>
             <% end %>
+          <% end %>
 
+          <% if can? :create, @task%>
             <%= link_to new_task_path,:class=>"btn btn-sm btn-info waves-effect waves-light" do %>
               <i class="fas fa-angle-right"></i>
             <% end %>
+          <% end %>
 
             <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
               <div class="modal-dialog modal-lg" role="document">
