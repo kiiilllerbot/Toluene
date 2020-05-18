@@ -1,3 +1,6 @@
 <% content_for :title do %>
   Dashboard
 <% end %>
+
+<% provide(:dashboard_active, 'active') %>
+<%= render 'shared/navbar' %>

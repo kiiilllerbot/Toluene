@@ -1,0 +1,37 @@
+<% content_for :title do %>
+  Notifications
+<% end %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-6 col-lg-6" style="margin-top: 5vh">
+      <div class="card">
+        <div class="card-body">
+          <h4>
+            <a href="/"><i class="fas fa-angle-left link h2 mr-2"></i></a>
+            All Notifications
+          </h4>
+          <hr class="my-2">
+          <% if @notifications.blank? %>
+            <div class="no-records mb-3"><%= t('notifications.no_records') %></div>
+          <% else %>
+            <% @notification_groups.each do |group, notifications| %>    
+              <%= render notifications %>
+            <% end %>
+          <% end %>
+          <%= paginate @notifications %>
+
+          <% if @notifications.blank? %>
+            <a href="/" class="ml-0 btn btn-sm btn-success">Back</a>
+          <% else %>
+            <div class="text-left">
+              <%= link_to t('notifications.clean_all'), notifications.clean_notifications_path, class: 'btn btn-sm btn-success', method: 'delete' %>
+            </div>
+          <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

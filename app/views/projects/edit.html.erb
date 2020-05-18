@@ -2,7 +2,9 @@
   Edit Project <%= @project.title %>
 <% end %>
 
-<div class="project-new-cover"></div>
+<% provide(:project_active, 'active') %>
+<%= render 'shared/navbar' %>
+
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-sm-12 col-md-10 col-lg-10" style="margin-top: 14vh">

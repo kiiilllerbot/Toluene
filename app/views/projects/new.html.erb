@@ -1,6 +1,8 @@
 <% content_for :title do %>
   Create New Project
 <% end %>
+<% provide(:project_active, 'active') %>
+<%= render 'shared/navbar' %>
 
 <div class="project-new-cover"></div>
 <div class="container-fluid">
