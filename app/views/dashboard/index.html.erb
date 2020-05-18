@@ -4,3 +4,487 @@
 
 <% provide(:dashboard_active, 'active') %>
 <%= render 'shared/navbar' %>
+
+<div id="dashboard">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card card-1">
+          <div class="card-body">
+            <div class="float-right">
+              <%= image_tag("all.png")%>
+            </div>
+            <h1 class="text-white"><%= @projects.count %></h1>
+            <hr class="my-1">
+            <% if @projects.count == 0 && @projects.count == 1 %>
+              <h5 class="text-white pt-1">Project</h5>
+            <% else %>
+              <h5 class="text-white pt-1">All Projects</h5>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="card card-2">
+          <div class="card-body">
+            <div class="float-right">
+              <%= image_tag("active.png")%>
+            </div>
+            <h1 class="text-white"><%= @projects.active.count %></h1>
+            <hr class="my-1">
+            <% if @projects.active.count == 0 && @projects.active.count == 1 %>
+              <h5 class="text-white pt-1">Active Project</h5>
+            <% else %>
+              <h5 class="text-white pt-1">Active Projects</h5>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="card card-3">
+          <div class="card-body">
+            <div class="float-right">
+              <%= image_tag("completed.png")%>
+            </div>
+            <h1 class="text-white"><%= @projects.finished.count %></h1>
+            <hr class="my-1">
+            <% if @projects.finished.count == 0 && @projects.finished.count == 1 %>
+              <h5 class="text-white pt-1">Completed Project</h5>
+            <% else %>
+              <h5 class="text-white pt-1">Completed Projects</h5>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="card card-4">
+          <div class="card-body">
+            <div class="float-right">
+              <%= image_tag("postponed.png")%>
+            </div>
+            <h1 class="text-white"><%= @projects.postponed.count %></h1>
+            <hr class="my-1">
+            <% if @projects.postponed.count == 0 && @projects.postponed.count == 1 %>
+              <h5 class="text-white pt-1">Postponed Project</h5>
+            <% else %>
+              <h5 class="text-white pt-1">Postponed Projects</h5>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12">
+        <div class="card">
+        <div class="card-header">
+						<p class="text-muted"><strong>Project Analytics</strong></p>
+						<div class="card-header-right">
+							<ul class="list-unstyled card-option">
+								<li><i class="feather icon-maximize full-card"></i></li>
+								<li><i class="feather icon-minus minimize-card"></i></li>
+							</ul>
+						</div>
+					</div>
+          <div class="card-body">
+            <div id="chart" style="height: 287px;">
+              <%= line_chart Project.group_by_day_of_week(:created_at, format: "%a").count,id: 'project',library: {animation: {easing: 'easeOutQuad'}} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<p class="text-muted"><strong>Latest Projects</strong></p>
+						<div class="card-header-right">
+							<ul class="list-unstyled card-option">
+								<li><i class="feather icon-maximize full-card"></i></li>
+								<li><i class="feather icon-minus minimize-card"></i></li>
+							</ul>
+						</div>
+					</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-hover  table-borderless">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Title</th>
+                  <th>Category</th>
+									<th>Deadline</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+						<tbody>
+
+						<% @projects.each do |project| %>
+							<tr>
+								<td># <%= project.id %></td>
+								<td><%= link_to project.title, project %></td>
+								<td><%= project.category %></td>
+                <td><%= project.deadline %></td>
+                <% if project.status == "Active" %>
+									<td><div class="badge badge-primary">Active</div></td>
+								<% elsif project.status == "Finished" %>
+									<td><div class="badge badge-success">Completed</div></td>
+                <% elsif project.status == "Postponed" %>
+                <td><div class="badge badge-danger">Postponed</div></td>
+								<% end %>
+							</tr>
+						<% end %>
+						</tbody>
+					</table>
+				<div class="text-center">
+					<%= link_to "View All Projects", projects_path, :class=>"btn btn-sm btn-primary" %>
+				</div>
+			</div>
+		</div>
+    </div>
+  </div>
+</div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <div class="card card-1">
+          <div class="card-body">
+            <div class="float-right">
+              <%= image_tag("all.png")%>
+            </div>
+            <h1 class="text-white"><%= @tasks.count %></h1>
+            <hr class="my-1">
+            <% if @tasks.count == 0 && @tasks.count == 1 %>
+              <h5 class="text-white pt-1">Completed Task</h5>
+            <% else %>
+              <h5 class="text-white pt-1">Completed Tasks</h5>
+            <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="card card-2">
+        <div class="card-body">
+          <div class="float-right">
+              <%= image_tag("active.png")%>
+            </div>
+            <h1 class="text-white"><%= @tasks.active.count %></h1>
+            <hr class="my-1">
+            <% if @tasks.active.count == 0 && @tasks.active.count == 1 %>
+              <h5 class="text-white pt-1">Active Task</h5>
+            <% else %>
+              <h5 class="text-white pt-1">Active Tasks</h5>
+            <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="card card-3">
+        <div class="card-body">
+          <div class="float-right">
+              <%= image_tag("completed.png")%>
+            </div>
+            <h1 class="text-white"><%= @tasks.finished.count %></h1>
+            <hr class="my-1">
+            <% if @tasks.finished.count == 0 && @tasks.finished.count == 1 %>
+              <h5 class="text-white pt-1">Completed Task</h5>
+            <% else %>
+              <h5 class="text-white pt-1">Completed Tasks</h5>
+            <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="card card-4">
+        <div class="card-body">
+          <div class="float-right">
+              <%= image_tag("postponed.png")%>
+            </div>
+            <h1 class="text-white"><%= current_user.tasks.count %></h1>
+            <hr class="my-1">
+            <% if current_user.tasks.count == 0 && current_user.tasks.count == 1 %>
+              <h5 class="text-white pt-1">My Task</h5>
+            <% else %>
+              <h5 class="text-white pt-1">My Tasks</h5>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12">
+        <div class="card">
+        	<div class="card-header">
+						<p class="text-muted"><strong>Task Analytics</strong></p>
+						<div class="card-header-right">
+							<ul class="list-unstyled card-option">
+								<li><i class="feather icon-maximize full-card"></i></li>
+								<li><i class="feather icon-minus minimize-card"></i></li>
+							</ul>
+						</div>
+					</div>
+          <div class="card-body">
+            <div id="chart" style="height: 287px;">
+              <%= column_chart Task.group_by_day_of_week(:created_at, format: "%a").count,id: 'task',library: {animation: {easing: 'easeOutQuad'}} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<p class="text-muted"><strong>Latest Tasks</strong></p>
+						<div class="card-header-right">
+							<ul class="list-unstyled card-option">
+								<li><i class="feather icon-maximize full-card"></i></li>
+								<li><i class="feather icon-minus minimize-card"></i></li>
+							</ul>
+						</div>
+					</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-hover  table-borderless">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Title</th>
+                  <th>Project</th>
+                  <th>Developer</th>
+									<th>Deadline</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+						<tbody>
+
+						<% @tasks.each do |task| %>
+							<tr>
+								<td># <%= task.id %></td>
+								<td><%= link_to task.title, task %></td>
+                <td><%= link_to task.project.title, task.project %></td>
+
+                <% if task.user.name %>
+									<td><%= link_to task.user.name, profile_path(task.user) %></td>
+								<% else %>
+									<td><%= link_to task.user.email, profile_path(task.user) %></td>
+								<% end %>
+
+                <td><%= task.deadline %></td>
+
+                <% if task.status == "Active" %>
+									<td><div class="badge badge-danger">Active</div></td>
+								<% else %>
+                  <td><div class="badge badge-success">Completed</div></td>
+								<% end %>
+							</tr>
+						<% end %>
+						</tbody>
+					</table>
+				<div class="text-center">
+					<%= link_to "View All Tasks", tasks_path, :class=>"btn btn-sm btn-primary" %>
+				</div>
+			</div>
+		</div>
+    </div>
+  </div>
+</div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+          <div class="card card-1">
+            <div class="card-body">
+              <div class="float-right">
+                <%= image_tag("all.png")%>
+              </div>
+              <h1 class="text-white"><%= @issues.count %></h1>
+              <hr class="my-1">
+              <% if @issues.count == 0 && @issues.count == 1 %>
+                <h5 class="text-white pt-1">All Issues</h5>
+              <% else %>
+                <h5 class="text-white pt-1">All Issues</h5>
+              <% end %>
+          </div>
+        </div>
+      </div>
+
+        <div class="col-sm-3">
+          <div class="card card-2">
+            <div class="card-body">
+              <div class="float-right">
+                <%= image_tag("active.png")%>
+              </div>
+              <h1 class="text-white"><%= @issues.active.count %></h1>
+              <hr class="my-1">
+              <% if @issues.active.count == 0 && @issues.active.count == 1 %>
+                <h5 class="text-white pt-1">Active Issues</h5>
+              <% else %>
+                <h5 class="text-white pt-1">Active Issues</h5>
+              <% end %>
+          </div>
+        </div>
+      </div>
+
+        <div class="col-sm-3">
+          <div class="card card-3">
+            <div class="card-body">
+              <div class="float-right">
+                <%= image_tag("active.png")%>
+              </div>
+              <h1 class="text-white"><%= @issues.solved.count %></h1>
+              <hr class="my-1">
+              <% if @issues.solved.count == 0 && @issues.solved.count == 1 %>
+                <h5 class="text-white pt-1">Solved Issues</h5>
+              <% else %>
+                <h5 class="text-white pt-1">Solved Issues</h5>
+              <% end %>
+          </div>
+        </div>
+      </div>
+
+        <div class="col-sm-3">
+          <div class="card card-4">
+            <div class="card-body">
+              <div class="float-right">
+                <%= image_tag("postponed.png")%>
+              </div>
+              <h1 class="text-white"><%= current_user.issues.count %></h1>
+              <hr class="my-1">
+              <% if current_user.issues.count == 0 && current_user.issues.count == 1 %>
+                <h5 class="text-white pt-1">My Issues</h5>
+              <% else %>
+                <h5 class="text-white pt-1">My Issues</h5>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12">
+        <div class="card">
+        	<div class="card-header">
+						<p class="text-muted"><strong>Issue Analytics</strong></p>
+						<div class="card-header-right">
+							<ul class="list-unstyled card-option">
+								<li><i class="feather icon-maximize full-card"></i></li>
+								<li><i class="feather icon-minus minimize-card"></i></li>
+							</ul>
+						</div>
+					</div>
+          <div class="card-body">
+            <div id="chart" style="height: 287px;">
+              <%= area_chart Issue.group_by_day_of_week(:created_at, format: "%a").count,id: 'issue',library: {animation: {easing: 'easeOutQuad'}} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<p class="text-muted"><strong>Latest Issues</strong></p>
+						<div class="card-header-right">
+							<ul class="list-unstyled card-option">
+								<li><i class="feather icon-maximize full-card"></i></li>
+								<li><i class="feather icon-minus minimize-card"></i></li>
+							</ul>
+						</div>
+					</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-hover  table-borderless">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Title</th>
+                  <th>Task</th>
+                  <th>Developer</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+						<tbody>
+
+						<% @issues.each do |issue| %>
+							<tr>
+								<td># <%= issue.id %></td>
+								<td><%= link_to issue.title, issue%></td>
+                <td><%= link_to issue.task.title, issue.task %></td>
+
+                <% if issue.user.name %>
+									<td><%= link_to issue.user.name, profile_path(issue.user) %></td>
+								<% else %>
+									<td><%= link_to issue.user.email, profile_path(issue.user) %></td>
+								<% end %>
+
+
+                <% if issue.status == "Active" %>
+									<td><div class="badge badge-danger">Active</div></td>
+								<% else %>
+                  <td><div class="badge badge-success">Solved</div></td>
+								<% end %>
+							</tr>
+						<% end %>
+						</tbody>
+					</table>
+				<div class="text-center">
+					<%= link_to "View All Issues", issues_path, :class=>"btn btn-sm btn-primary" %>
+				</div>
+			</div>
+		</div>
+    </div>
+  </div>
+</div>
+
+  <div class="row mt-3 mb-3">
+      <div class="col-sm-6">
+        <div class="card">
+        <div class="card-header">
+						<p class="text-muted"><strong>Task Submission Analytics</strong></p>
+						<div class="card-header-right">
+							<ul class="list-unstyled card-option">
+								<li><i class="feather icon-maximize full-card"></i></li>
+								<li><i class="feather icon-minus minimize-card"></i></li>
+							</ul>
+						</div>
+					</div>
+          <div class="card-body">
+            <div id="chart" style="height: 287px;">
+              <%= bar_chart Work.group_by_day_of_week(:created_at, format: "%a").count,id: 'work',library: {animation: {easing: 'easeOutQuad'}} %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="card">
+        <div class="card-header">
+						<p class="text-muted"><strong>Bug Analytics</strong></p>
+						<div class="card-header-right">
+							<ul class="list-unstyled card-option">
+								<li><i class="feather icon-maximize full-card"></i></li>
+								<li><i class="feather icon-minus minimize-card"></i></li>
+							</ul>
+						</div>
+					</div>
+          <div class="card-body">
+            <div id="chart" style="height: 287px;">
+              <%= pie_chart Bug.group_by_day_of_week(:created_at, format: "%a").count,id: 'bug',library: {animation: {easing: 'easeOutQuad'}} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

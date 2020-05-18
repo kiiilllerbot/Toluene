@@ -101,3 +101,24 @@
   font-weight: 500;
   border-bottom: 2px solid #2962FF;
 }
+
+#dashboard{
+  margin-top: 90px;
+  hr{ background-color: #fff !important;}
+
+  .card-1{
+    background-image: linear-gradient(to right, #FE9365, #FEB697);
+  }
+
+  .card-2{
+    background-image: linear-gradient(to right, #0AC282, #0DF3A3);
+  }
+
+  .card-3{
+    background-image: linear-gradient(to right, #FE5E71, #FE8F9C);
+  }
+
+  .card-4{
+    background-image: linear-gradient(to right, #01AAAD, #01DADE);
+  }
+}

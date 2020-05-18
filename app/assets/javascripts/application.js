@@ -5,6 +5,8 @@
 //= require rails-ujs
 //= require particles
 //= require particles2
+//= require chartkick
+//= require Chart.bundle
 //= require activestorage
 //= require turbolinks
 //= require_tree .
