@@ -1,0 +1,33 @@
+<% content_for :title do %>
+  Bug > <%= @bug.title %>
+<% end %>
+<% provide(:bug_active, 'active') %>
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-sm-12 col-md-8 col-lg-8" style="margin-top: 17vh">
+			<div class="card">
+				<div class="card-body">
+					<div class="float-right">
+						<%= link_to "Delete", bug_path,:class=>"btn btn-sm btn-danger", method: :delete, data: {confirm: 'Are you sure?' }%>
+					</div>
+					<p><%= @bug.title %></p>
+					<hr class="my-1">
+					<small class="text-justify"><%= sanitize @bug.body %></p>
+					<hr class="my-1">
+					<small class="text-muted">Reported by
+
+					<% if @bug.user.name? %>
+						<%= @bug.user.name %>
+					<% else %>
+						<%= @bug.user.email %>
+					<% end %>
+					| <%= @bug.created_at.strftime("%B, %d, %Y")%>
+					</small>
+				</div>
+			</div>
+			<%= link_to 'Back', bugs_path ,:class=>"btn btn-success btn-sm ml-0" %>
+			<%= link_to 'New Request?', new_bug_path ,:class=>"btn btn-info btn-sm" %>
+		</div>
+	</div>
+</div>
+

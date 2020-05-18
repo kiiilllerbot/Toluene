@@ -1,0 +1,24 @@
+<% content_for :title do %>
+  New Bug Request
+<% end %>
+<% provide(:bug_active, 'active') %>
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-sm-12 col-md-8 col-lg-8" style="margin-top: 15vh">
+			<div class="card">
+				<div class="card-header">
+					<h2>
+            <%= link_to bugs_path do %>
+              <i class="fas fa-angle-left link h2 mr-2"></i>
+            <% end %>
+            Create A New Bug Request
+          </h2>
+				</div>
+				<div class="card-body">
+					<%= render 'form', bug: @bug %>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

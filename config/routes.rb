@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :bugs
   resources :notes
   resources :todos
   resources :works

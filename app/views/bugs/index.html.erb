@@ -1,0 +1,59 @@
+<% content_for :title do %>
+  All Bug Requests
+<% end %>
+<% provide(:bug_active, 'active') %>
+<% if @bugs.blank? %>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-8 col-lg-8" style="margin-top: 15vh">
+        <div class="jumbotron">
+          <h2 class="display-4">No Bugs Found!</h2>
+          <hr class="my-4">
+          <p class="lead">Seems like no bug haven't been created yet</p>
+          <%= link_to "Back", root_path, :class=>"btn btn-primary btn-sm" %>
+          <span>Or</span>
+          <%= link_to "Create New", new_bug_path, :class=>"btn btn-success btn-sm" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-8 col-lg-8" style="margin-top: 15vh">
+        <div class="card">
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @bugs.each do |bug| %>
+                  <tr>
+                    <td><%= link_to bug.title, bug %></td>
+                    <% if bug.user.name? %>
+                      <td><%= bug.user.name %></td>
+                    <% else %>
+                      <td><%= bug.user.email %></td>
+                    <% end %>
+
+                    <td><%= link_to 'Show', bug %></td>
+
+                      <td><%= link_to 'Destroy', bug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+      </div>
+      <%= link_to 'Back', root_path,:class=>"btn btn-primary btn-sm ml-0" %>
+      <%= link_to 'New Bug', new_bug_path,:class=>"btn btn-success btn-sm" %>
+      </div>
+    </div>
+  </div>
+<% end %>

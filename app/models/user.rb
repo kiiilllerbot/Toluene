@@ -8,5 +8,6 @@ class User < ApplicationRecord
   has_many :works
   has_many :todos
   has_many :notes
+  has_many :bugs
 
 end
