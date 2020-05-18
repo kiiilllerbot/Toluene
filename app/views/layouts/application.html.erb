@@ -14,7 +14,11 @@
   </head>
   <body>
     <%= render 'shared/alert' %>
-    <%= render 'shared/navbar' %>
+
+    <% if !current_page?(new_user_session_path) %>
+      <%= render 'shared/navbar' %>
+    <% end %>
+
     <%= yield %>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/js/mdb.min.js"></script>
   </body>
