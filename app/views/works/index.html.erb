@@ -23,7 +23,7 @@
         <%= link_to root_path, :class=>"btn btn-secondary btn-md" do %>
           <i class="fas fa-angle-left"></i>
         <% end %>
-       </li>
+      </li>
 
 
       <li>
@@ -64,7 +64,15 @@
                 <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
                     <div class="card">
                       <div class="card-body">
-                        <p><%= link_to truncate(work.title, length: 53), work,:class=>"text-dark link" %></p>
+                        <p class="card-text">
+                          <% if work.task.status == 'Active' %>
+                            <i class="fas fa-circle-notch"></i>
+                            <%= link_to truncate(work.title, length: 53), work,:class=>"text-dark link" %>
+                          <% elsif work.task.status == 'Finished' %>
+                            <i class="far fa-check-circle"></i>
+                            <%= link_to truncate(work.title, length: 53), work,:class=>"text-dark link" %>
+                          <% end %>
+                        </p>
                         <hr class="my-1">
                         <p class="text-muted">Created at <%= work.created_at.strftime("%B, %d, %Y")%></p>
                       </div>

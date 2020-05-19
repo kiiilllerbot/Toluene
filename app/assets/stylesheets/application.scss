@@ -48,15 +48,16 @@
     }
   }
 
+// Customizing HTML abbr Tag to Display -> None
   abbr{
     display: none;
   }
 
+// Trix Editor Configs
 .trix-content{
     height: 250px;
     overflow-y: auto;
 }
-
 // Hide The Attachment Icon On From Trix Editor
 .trix-button-group.trix-button-group--file-tools{display: none;}
 
@@ -70,16 +71,16 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-  .fa-user{ color: #212121}
-
+// All Projects Configs
 #all-projects{
   .card{
     img{
       height: 280px;
     }
   }
-  }
+}
 
+// Link Customization
 .link{
     text-decoration: none;
     color: #263238;
@@ -102,6 +103,7 @@
   border-bottom: 2px solid #2962FF;
 }
 
+// Dashboard Design
 #dashboard{
   margin-top: 90px;
   hr{ background-color: #fff !important;}
@@ -122,3 +124,16 @@
     background-image: linear-gradient(to right, #01AAAD, #01DADE);
   }
 }
+
+// Font-Awesome Icon Color Setup
+.fa-user{ color: #212121}
+.fa-circle-notch{color: #ef5350;}
+.fa-check-circle{color: #00E676;}
+.fa-pause-circle{color: #3D5AFE;}
+.fa-pencil-alt{color: #651FFF;}
+.fa-minus-circle{color: #ef5350}
+.fa-pencil-ruler{color: #3D5AFE;}
+.fa-angle-left{color: #fff;}
+.fa-arrow-left{color: #651FFF;}
+.fa-trash-alt{color: #ef5350;}
+.fa-underline{color: #3D5AFE;}

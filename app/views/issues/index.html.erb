@@ -80,7 +80,15 @@
                 <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
                     <div class="card">
                       <div class="card-body">
-                        <p class="card-text"><%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %></p>
+                        <p class="card-text">
+                          <% if issue.status == 'Active' %>
+                            <i class="fas fa-circle-notch"></i>
+                            <%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %>
+                          <% elsif issue.status == 'Solved' %>
+                            <i class="far fa-check-circle"></i>
+                            <%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %>
+                          <% end %>
+                        </p>
                         <hr class="my-1">
                         <small class="text-muted">
                         <% if issue.user.name %>
@@ -114,7 +122,15 @@
                 <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
                     <div class="card">
                       <div class="card-body">
-                        <p class="card-text"><%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %></p>
+                        <p class="card-text">
+                          <% if issue.status == 'Active' %>
+                            <i class="fas fa-circle-notch"></i>
+                            <%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %>
+                          <% elsif issue.status == 'Solved' %>
+                            <i class="far fa-check-circle"></i>
+                            <%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %>
+                          <% end %>
+                        </p>
                         <hr class="my-1">
                         <small class="text-muted">
                         <% if issue.user.name %>
@@ -147,7 +163,15 @@
                 <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
                     <div class="card">
                       <div class="card-body">
-                        <p class="card-text"><%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %></p>
+                        <p class="card-text">
+                          <% if issue.status == 'Active' %>
+                            <i class="fas fa-circle-notch"></i>
+                            <%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %>
+                          <% elsif issue.status == 'Solved' %>
+                            <i class="far fa-check-circle"></i>
+                            <%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %>
+                          <% end %>
+                        </p>
                         <hr class="my-1">
                         <small class="text-muted">
                         <% if issue.user.name %>
@@ -181,7 +205,15 @@
                 <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
                     <div class="card">
                       <div class="card-body">
-                        <p class="card-text"><%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %></p>
+                        <p class="card-text">
+                          <% if issue.status == 'Active' %>
+                            <i class="fas fa-circle-notch"></i>
+                            <%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %>
+                          <% elsif issue.status == 'Solved' %>
+                            <i class="far fa-check-circle"></i>
+                            <%= link_to truncate(issue.title, length: 53), issue,:class=>"text-dark link" %>
+                          <% end %>
+                        </p>
                         <hr class="my-1">
                         <small class="text-muted">
                         <% if issue.user.name %>

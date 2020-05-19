@@ -85,7 +85,18 @@
                         <%= link_to image_tag(project.image_link,:class=>"card-img-top"),project %>
                       </div>
                       <div class="card-body">
-                        <p><%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %></p>
+                        <p class="card-text">
+                          <% if project.status == 'Active' %>
+                            <i class="fas fa-circle-notch"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% elsif project.status == 'Finished' %>
+                            <i class="far fa-check-circle"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% elsif project.status == 'Postponed' %>
+                            <i class="far fa-pause-circle"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% end %>
+                        </p>
                         <p class="text-muted">Created at <%= project.created_at.strftime("%B, %d, %Y")%></p>
                       </div>
                     </div>
@@ -114,7 +125,18 @@
                         <%= link_to image_tag(project.image_link,:class=>"card-img-top"),project %>
                       </div>
                       <div class="card-body">
-                        <p><%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %></p>
+                        <p class="card-text">
+                          <% if project.status == 'Active' %>
+                            <i class="fas fa-circle-notch"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% elsif project.status == 'Finished' %>
+                            <i class="far fa-check-circle"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% elsif project.status == 'Postponed' %>
+                            <i class="far fa-pause-circle"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% end %>
+                        </p>
                         <p class="text-muted">Created at <%= project.created_at.strftime("%B, %d, %Y")%></p>
                       </div>
                     </div>
@@ -142,7 +164,18 @@
                         <%= link_to image_tag(project.image_link,:class=>"card-img-top"),project %>
                       </div>
                       <div class="card-body">
-                        <p><%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %></p>
+                        <p class="card-text">
+                          <% if project.status == 'Active' %>
+                            <i class="fas fa-circle-notch"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% elsif project.status == 'Finished' %>
+                            <i class="far fa-check-circle"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% elsif project.status == 'Postponed' %>
+                            <i class="far fa-pause-circle"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% end %>
+                        </p>
                         <p class="text-muted">Created at <%= project.created_at.strftime("%B, %d, %Y")%></p>
                       </div>
                     </div>
@@ -171,7 +204,18 @@
                         <%= link_to image_tag(project.image_link,:class=>"card-img-top"),project %>
                       </div>
                       <div class="card-body">
-                        <p><%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %></p>
+                        <p class="card-text">
+                          <% if project.status == 'Active' %>
+                            <i class="fas fa-circle-notch"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% elsif project.status == 'Finished' %>
+                            <i class="far fa-check-circle"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% elsif project.status == 'Postponed' %>
+                            <i class="far fa-pause-circle"></i>
+                            <%= link_to truncate(project.title, length: 53), project,:class=>"text-dark link" %>
+                          <% end %>
+                        </p>
                         <p class="text-muted">Created at <%= project.created_at.strftime("%B, %d, %Y")%></p>
                       </div>
                     </div>
