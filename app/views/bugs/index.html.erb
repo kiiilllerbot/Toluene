@@ -47,6 +47,10 @@
 
                     <td><%= link_to 'Show', bug %></td>
 
+                    <% if can? :update, @bug %>
+                      <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
+                    <% end %>
+
                     <% if can? :destroy, @bug %>
                       <td><%= link_to 'Destroy', bug, data:{toggle: 'modal',target:'#large-Modal'} %></td>
                     <% end %>

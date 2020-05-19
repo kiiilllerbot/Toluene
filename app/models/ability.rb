@@ -32,6 +32,7 @@ class Ability
 
         # Bug Management
         can :destroy, Bug, user_id: user.id
+        can :update, Bug, user_id: user.id
         can :create, Bug
         can :read, Bug
 

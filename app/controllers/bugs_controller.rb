@@ -2,7 +2,7 @@ class BugsController < ApplicationController
 
   load_and_authorize_resource
   before_action :authenticate_user!
-  before_action :set_bug, only: [:show, :destroy]
+  before_action :set_bug, only: [:show, :edit, :update, :destroy]
 
   def index
     @bugs = Bug.all.order('created_at DESC')
@@ -15,6 +15,9 @@ class BugsController < ApplicationController
     @bug = current_user.bugs.build
   end
 
+  def edit
+  end
+
 
   def create
     @bug = current_user.bugs.build(bug_params)
@@ -25,6 +28,18 @@ class BugsController < ApplicationController
         format.json { render :show, status: :created, location: @bug }
       else
         format.html { render :new }
+        format.json { render json: @bug.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @bug.update(bug_params)
+        format.html { redirect_to @bug, notice: 'Bug was successfully updated.' }
+        format.json { render :show, status: :ok, location: @bug }
+      else
+        format.html { render :edit }
         format.json { render json: @bug.errors, status: :unprocessable_entity }
       end
     end
