@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "trix";
 
 // Customizing Form-Control Class
 .form-control{
@@ -64,6 +65,20 @@
     }
   }
 }
+
+// Hide The Grey Inactive Progress Bar Of Trix Editor File Upload
+.attachment__progress{
+  display: none;
+}
+
+// Hide The Attachment Icon On From Trix Editor
+.trix-button-group.trix-button-group--file-tools{display: none;}
+
+.fa-spinner, .fa-check-circle{ color: #00E676}
+
+.jumbotron{ background-color: #546E7A !important}
+
+.white-bordered{ border: 2px solid #fff}
 
 // Link Customization
 .link{

@@ -7,6 +7,7 @@
 // require moment
 //= require particles
 //= require particles2
+//= require trix
 //= require activestorage
 //= require turbolinks
 //= require_tree .
@@ -20,13 +21,3 @@ $(document).ready(function (){
 		})
 	},4500);
 });
-
-document.addEventListener("turbolinks:load", function() {
-	tinymce.remove();
-	tinymce.init({
-	  height: '220',
-	  selector:'textarea#comment_body',
-	  plugins: "codesample image media link code",
-	  toolbar: "undo redo | styleselect | bold italic link | codesample image media | code"
-	});
-  })
