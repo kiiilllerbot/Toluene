@@ -40,7 +40,7 @@
 
   <div class="form-group row">
     <div class="col-sm-12">
-      <%= f.input :description, id: "project_description" %>
+      <%= f.input :description, input_html:{rows: 6} %>
       <%= f.association :user ,as: :hidden %>
     </div>
   </div>
