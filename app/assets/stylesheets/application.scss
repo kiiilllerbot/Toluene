@@ -80,6 +80,11 @@
 
 .white-bordered{ border: 2px solid #fff}
 
+.trix-content{
+  height: 250px;
+  overflow-y: auto;
+}
+
 // Link Customization
 .link{
     text-decoration: none;

@@ -31,7 +31,7 @@
                   <% if @task.user.name? %>
                     <td><%= link_to @task.user.name, profile_path(@task.user) %></td>
                   <% else %>
-                    <td><%=  link_to @task.userr.email, profile_path(@task.user) %></td>
+                    <td><%=  link_to @task.user.email, profile_path(@task.user) %></td>
                   <% end %>
                   <td><%= @task.deadline %></td>
                   <td>
