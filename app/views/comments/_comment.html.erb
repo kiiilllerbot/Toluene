@@ -12,12 +12,14 @@
                             </div>
                             <% if comment.user.image_link? %>
                                 <%= image_tag(comment.user.image_link,:size=>"28x28", :class=>"rounded mr-2") %>
+                            <% else %>
+                                <%= image_tag("avatar.png",:size=>"28x28", :class=>"rounded mr-2") %>
                             <% end %>
                             <strong>
                                 <% if comment.user.name? %>
-                                    <%= comment.user.name %>
+                                    <%= link_to comment.user.name, profile_path(comment.user) %>
                                 <% else %>
-                                    <%= comment.user.email %>
+                                    <%= link_to comment.user.email, profile_path(comment.user) %>
                                 <% end %>
                             </strong>
                             <br>
