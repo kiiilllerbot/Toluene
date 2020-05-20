@@ -21,7 +21,12 @@ $(document).ready(function (){
 	},4500);
 });
 
-// TinyMCE Config
-tinymce.init({
-	selector: '#comment_body'
-  });
+document.addEventListener("turbolinks:load", function() {
+	tinymce.remove();
+	tinymce.init({
+	  height: '220',
+	  selector:'textarea#comment_body',
+	  plugins: "codesample image media link code",
+	  toolbar: "undo redo | styleselect | bold italic link | codesample image media | code"
+	});
+  })
