@@ -1,13 +1,13 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require trix
 //= require rails-ujs
 //= require chartkick
 //= require Chart.bundle
 // require moment
 //= require particles
 //= require particles2
-//= require trix
 //= require activestorage
 //= require turbolinks
 //= require_tree .
