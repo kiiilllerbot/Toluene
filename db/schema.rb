@@ -12,15 +12,18 @@
 
 ActiveRecord::Schema.define(version: 2020_05_18_171518) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: :cascade do |t|
     t.string "trackable_type"
-    t.integer "trackable_id"
+    t.bigint "trackable_id"
     t.string "owner_type"
-    t.integer "owner_id"
+    t.bigint "owner_id"
     t.string "key"
     t.text "parameters"
     t.string "recipient_type"
-    t.integer "recipient_id"
+    t.bigint "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_171518) do
   create_table "bugs", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_bugs_on_user_id"
@@ -42,8 +45,8 @@ ActiveRecord::Schema.define(version: 2020_05_18_171518) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.integer "user_id"
-    t.integer "issue_id"
+    t.bigint "user_id"
+    t.bigint "issue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["issue_id"], name: "index_comments_on_issue_id"
@@ -54,8 +57,8 @@ ActiveRecord::Schema.define(version: 2020_05_18_171518) do
     t.string "title"
     t.text "description"
     t.string "status", default: "Active"
-    t.integer "user_id"
-    t.integer "task_id"
+    t.bigint "user_id"
+    t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_issues_on_task_id"
@@ -64,13 +67,13 @@ ActiveRecord::Schema.define(version: 2020_05_18_171518) do
 
   create_table "notes", force: :cascade do |t|
     t.text "body"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
+  create_table "notifications", id: :serial, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "actor_id"
     t.string "notify_type", null: false
@@ -98,7 +101,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_171518) do
     t.string "image_link"
     t.date "deadline"
     t.string "status", default: "Active"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
@@ -109,8 +112,8 @@ ActiveRecord::Schema.define(version: 2020_05_18_171518) do
     t.text "description"
     t.date "deadline"
     t.string "status", default: "Active"
-    t.integer "user_id"
-    t.integer "project_id"
+    t.bigint "user_id"
+    t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_tasks_on_project_id"
@@ -120,7 +123,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_171518) do
   create_table "todos", force: :cascade do |t|
     t.string "name"
     t.string "status", default: "Active"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_todos_on_user_id"
@@ -154,7 +157,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_171518) do
     t.datetime "invitation_accepted_at"
     t.integer "invitation_limit"
     t.string "invited_by_type"
-    t.integer "invited_by_id"
+    t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
@@ -167,12 +170,24 @@ ActiveRecord::Schema.define(version: 2020_05_18_171518) do
   create_table "works", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "user_id"
-    t.integer "task_id"
+    t.bigint "user_id"
+    t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_works_on_task_id"
     t.index ["user_id"], name: "index_works_on_user_id"
   end
 
+  add_foreign_key "bugs", "users"
+  add_foreign_key "comments", "issues"
+  add_foreign_key "comments", "users"
+  add_foreign_key "issues", "tasks"
+  add_foreign_key "issues", "users"
+  add_foreign_key "notes", "users"
+  add_foreign_key "projects", "users"
+  add_foreign_key "tasks", "projects"
+  add_foreign_key "tasks", "users"
+  add_foreign_key "todos", "users"
+  add_foreign_key "works", "tasks"
+  add_foreign_key "works", "users"
 end
