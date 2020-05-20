@@ -22,13 +22,6 @@ $(document).ready(function (){
 });
 
 // TinyMCE Config
-document.addEventListener("turbolinks:load", function() {
-	tinymce.remove();
-	tinymce.init({
-		height: '220',
-		selector:'textarea#comment_description',
-		branding: false,
-		plugins: "codesample image media link code",
-		toolbar: "undo redo | styleselect | bold italic link | codesample image media | code"
-	  }); 
-  })
+tinymce.init({
+	selector: '#comment_body'
+  });
