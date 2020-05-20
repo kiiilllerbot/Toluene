@@ -8,12 +8,12 @@
 <% if @bugs.blank? %>
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-sm-12 col-md-8 col-lg-8" style="margin-top: 15vh">
+      <div class="col-sm-12 col-md-5 col-lg-5" style="margin-top: 15vh">
         <div class="jumbotron">
           <h2 class="display-4">No Bugs Found!</h2>
           <hr class="my-4">
           <p class="lead">Seems like no bug haven't been created yet</p>
-          <%= link_to "Back", root_path, :class=>"btn btn-primary btn-sm" %>
+          <%= link_to "Back", root_path, :class=>"btn btn-primary btn-sm ml-0" %>
           <span>Or</span>
           <%= link_to "Create New", new_bug_path, :class=>"btn btn-success btn-sm" %>
         </div>

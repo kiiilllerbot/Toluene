@@ -27,9 +27,9 @@
                   <td><%= @issue.id %></td>
                   <td><%= @issue.task.title %></td>
                   <% if @issue.user.name? %>
-                    <td><%= @issue.user.name %></td>
+                    <td><%= link_to @issue.user.name, profile_path(@issue.user) %></td>
                   <% else %>
-                    <td><%= @issue.user.email %></td>
+                    <td><%= link_to @issue.user.email ,profile_path(@issue.user) %></td>
                   <% end %>
                   <td>
                     <% if @issue.status == 'Active' %>
