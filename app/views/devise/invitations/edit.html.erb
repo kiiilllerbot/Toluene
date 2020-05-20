@@ -2,8 +2,6 @@
   Accept Invitation
 <% end %>
 
-<%= render 'shared/navbar' %>
-
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-8" style="margin-top: 30vh">
@@ -20,7 +18,7 @@
 							  </div>
 
 						  <div class="form-actions">
-						    <%= f.button :submit, t("devise.invitations.edit.submit_button"),:class=>"btn btn-sm btn-success" %>
+						    <%= f.button :submit, t("devise.invitations.edit.submit_button"),:class=>"btn btn-sm btn-success ml-0" %>
 						    <%= link_to "Back", root_path, :class=>"btn btn-sm btn-info" %>
 						  </div>
 						<% end %>

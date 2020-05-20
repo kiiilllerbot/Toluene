@@ -110,9 +110,7 @@
                 <h2 class="display-4">No Task Found! <i class="far fa-sad-tear"></i></h2>
                 <hr class="my-4">
                 <p class="lead">Seems like no task haven't been created yet</p>
-                <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm" %>
-                <span>Or</span>
-                <%= link_to "Create New", new_task_path, :class=>"btn btn-success btn-sm" %>
+                <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm ml-0" %>
               </div>
             <% end %>
           </div>
@@ -125,7 +123,7 @@
                 <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
                     <div class="card">
                       <div class="card-body">
-                         <p class="card-text">
+                        <p class="card-text">
                           <% if task.status == 'Active' %>
                             <i class="fas fa-circle-notch"></i>
                             <%= link_to truncate(task.title, length: 53), task,:class=>"text-dark link" %>
@@ -135,7 +133,15 @@
                           <% end %>
                         </p>
                         <hr class="my-1">
-                        <p class="text-muted">Created at <%= task.created_at.strftime("%B, %d, %Y")%></p>
+                        <small class="text-muted">
+                        Assigned to
+                        <% if task.user.name? %>
+                          <%= link_to task.user.name, profile_path(task.user) %>
+                        <% else %>
+                          <%= link_to task.user.email, profile_path(task.email) %>
+                        <% end %>
+                        Created at <%= task.created_at.strftime("%B, %d, %Y")%>
+                        </small>
                       </div>
                     </div>
                 </div>
@@ -145,9 +151,7 @@
                 <h2 class="display-4">No Active Task Found! <i class="far fa-sad-tear"></i></h2>
                 <hr class="my-4">
                 <p class="lead">Seems like no task is running currently</p>
-                <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm" %>
-                <span>Or</span>
-                <%= link_to "Create New", new_task_path, :class=>"btn btn-success btn-sm" %>
+                <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm ml-0" %>
               </div>
             <% end %>
           </div>
@@ -169,7 +173,15 @@
                           <% end %>
                         </p>
                         <hr class="my-1">
-                        <p class="text-muted">Created at <%= task.created_at.strftime("%B, %d, %Y")%></p>
+                        <small class="text-muted">
+                        Assigned to
+                        <% if task.user.name? %>
+                          <%= link_to task.user.name, profile_path(task.user) %>
+                        <% else %>
+                          <%= link_to task.user.email, profile_path(task.email) %>
+                        <% end %>
+                        Created at <%= task.created_at.strftime("%B, %d, %Y")%>
+                        </small>
                       </div>
                     </div>
                 </div>
@@ -179,9 +191,7 @@
               <h2 class="display-4">No Finished Task Found! <i class="far fa-sad-tear"></i></h2>
               <hr class="my-4">
               <p class="lead">Seems like no task haven't been finished yet</p>
-              <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm" %>
-              <span>Or</span>
-              <%= link_to "Create New", new_task_path, :class=>"btn btn-success btn-sm" %>
+              <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm ml-0" %>
             </div>
             <% end %>
           </div>
@@ -204,7 +214,11 @@
                           <% end %>
                         </p>
                         <hr class="my-1">
-                        <p class="text-muted">Created at <%= task.created_at.strftime("%B, %d, %Y")%></p>
+                        <small class="text-muted">
+                        Assigned to
+                        <%= link_to "You", profile_path(task.user) %>
+                        Created at <%= task.created_at.strftime("%B, %d, %Y")%>
+                        </small>
                       </div>
                     </div>
                 </div>
@@ -214,9 +228,7 @@
               <h2 class="display-4">You don't have any task! <i class="far fa-sad-tear"></i></h2>
               <hr class="my-4">
               <p class="lead">Seems like manager haven't alloted you any task yet</p>
-              <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm" %>
-              <span>Or</span>
-              <%= link_to "Create New", new_task_path, :class=>"btn btn-success btn-sm" %>
+              <%= link_to "Back", tasks_path, :class=>"btn btn-primary btn-sm ml-0" %>
             </div>
             <% end %>
           </div>

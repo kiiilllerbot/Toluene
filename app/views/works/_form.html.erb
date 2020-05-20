@@ -6,13 +6,13 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.association :task,prompt:'Select Task' %>
-    <%= f.input :description,as: :trix_editor %>
+    <%= f.input :description %>
     <%= f.association :user ,as: :hidden %>
     
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit,"Submit Now", :class=>"btn btn-success btn-sm" %>
+    <%= f.button :submit,"Submit Now", :class=>"btn btn-success btn-sm ml-0" %>
     <%= link_to 'Back', works_path ,:class=>"btn btn-info btn-sm" %>
   </div>
 

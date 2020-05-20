@@ -74,7 +74,14 @@
                           <% end %>
                         </p>
                         <hr class="my-1">
-                        <p class="card-text">Created at <%= work.created_at.strftime("%B, %d, %Y")%></p>
+                        <small class="card-text">
+                          <% if work.user.name? %>
+                            <%= link_to work.user.name, profile_path(work.user) %>
+                          <% else %>
+                            <%= link_to work.user.email, profile_path(work.user) %>
+                          <% end %>
+                          Created it at <%= work.created_at.strftime("%B, %d, %Y")%>
+                        </small>
                       </div>
                     </div>
                 </div>
@@ -84,9 +91,7 @@
                 <h2 class="display-4">No Submission Found! <i class="far fa-sad-tear"></i></h2>
                 <hr class="my-4">
                 <p class="lead">Seems like nobody have submitted work yet</p>
-                <%= link_to "Back", root_path, :class=>"btn btn-primary btn-sm" %>
-                <span>Or</span>
-                <%= link_to "Create New", new_work_path, :class=>"btn btn-success btn-sm" %>
+                <%= link_to "Back", root_path, :class=>"btn btn-primary btn-sm ml-0" %>
               </div>
             <% end %>
           </div>
@@ -110,7 +115,10 @@
                           <% end %>
                         </p>
                         <hr class="my-1">
-                        <p class="card-text">Created at <%= work.created_at.strftime("%B, %d, %Y")%></p>
+                        <small class="card-text">
+                          <%= link_to "You", profile_path(work.user) %>
+                          Created it at <%= work.created_at.strftime("%B, %d, %Y")%>
+                        </small>
                       </div>
                     </div>
                 </div>
@@ -120,9 +128,7 @@
               <h2 class="display-4">You don't have any Submissions! <i class="far fa-sad-tear"></i></h2>
               <hr class="my-4">
               <p class="lead">Seems like manager you haven't submitted any task yet</p>
-              <%= link_to "Back", root_path, :class=>"btn btn-primary btn-sm" %>
-              <span>Or</span>
-              <%= link_to "Create New", new_work_path, :class=>"btn btn-success btn-sm" %>
+              <%= link_to "Back", root_path, :class=>"btn btn-primary btn-sm ml-0" %>
             </div>
             <% end %>
           </div>

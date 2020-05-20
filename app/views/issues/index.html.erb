@@ -92,9 +92,9 @@
                         <hr class="my-1">
                         <small class="text-muted">
                         <% if issue.user.name %>
-                          <%= issue.user.name %>
+                          <%= link_to issue.user.name, profile_path(issue.user) %>
                         <% else %>
-                          <%= issue.user.email %>
+                          <%= link_to issue.user.email, profile_path(issue.user) %>
                         <% end %>
                         Created at <%= issue.created_at.strftime("%B, %d, %Y")%>
                         </small>
@@ -134,9 +134,9 @@
                         <hr class="my-1">
                         <small class="text-muted">
                         <% if issue.user.name %>
-                          <%= issue.user.name %>
+                          <%= link_to issue.user.name, profile_path(issue.user) %>
                         <% else %>
-                          <%= issue.user.email %>
+                          <%= link_to issue.user.email, profile_path(issue.user) %>
                         <% end %>
                         Created at <%= issue.created_at.strftime("%B, %d, %Y")%>
                         </small>
@@ -175,9 +175,9 @@
                         <hr class="my-1">
                         <small class="text-muted">
                         <% if issue.user.name %>
-                          <%= issue.user.name %>
+                          <%= link_to issue.user.name, profile_path(issue.user) %>
                         <% else %>
-                          <%= issue.user.email %>
+                          <%= link_to issue.user.email, profile_path(issue.user) %>
                         <% end %>
                         Created at <%= issue.created_at.strftime("%B, %d, %Y")%>
                         </small>
@@ -216,11 +216,8 @@
                         </p>
                         <hr class="my-1">
                         <small class="text-muted">
-                        <% if issue.user.name %>
-                          <%= issue.user.name %>
-                        <% else %>
-                          <%= issue.user.email %>
-                        <% end %>
+                        <%= link_to "You", profile_path(issue.user) %>
+                        have created it
                         Created at <%= issue.created_at.strftime("%B, %d, %Y")%>
                         </small>
                       </div>

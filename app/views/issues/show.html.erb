@@ -106,17 +106,16 @@
   <% end %>
 </div>
 
-
 <div class="container-fluid">
   <div class="row justify-content-center"style="padding-bottom: 0px">
     <div class="col-sm-10" >
       <div class="card mt-2 mb-2">
         <div class="card-body">
-          <%= form_with model: [@issue, @comment], remote: true do |f| %>
-            <%= f.trix_editor :body,:class=>"form-control",placeholder:'Do you know the solution?',rows:5  %>
+          <%= form_for([@issue, @issue.comments.build]) do |f| %>
+            <%= f.text_area :body, id: "comment_description",:class=>"form-control",placeholder:'Do you know the solution?',rows:5  %>
             <div style="padding-top: 5px">
               <%= link_to "Back", issues_path, :class=>"btn btn-sm btn-secondary ml-0" %>
-              <%= f.submit "Solve",:class=>"btn btn-sm btn-success", remote: true %>
+              <%= f.submit "Solve",:class=>"btn btn-sm btn-success ml-0" %>
             </div>
           <% end %>
         </div>

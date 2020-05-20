@@ -14,7 +14,9 @@
               <p class="text-justify"><%= sanitize @note.body %></p>
               <%= link_to "Back", notes_path, :class=>"btn btn-sm btn-secondary ml-0"%>
               <%= link_to "Edit", edit_note_path, :class=>"btn btn-sm btn-info"%>
-              <%= link_to "Delete", note_path, method: :delete, :class=>"btn btn-sm btn-danger"%>
+
+              <%= link_to "Delete", note_path, method: :delete, data:{confirm: 'Are you sure?'},:class=>"btn btn-sm btn-danger"%>
+
               <%= link_to "Create Another", new_note_path, :class=>"btn btn-sm btn-success"%>
           </div>
         </div>
