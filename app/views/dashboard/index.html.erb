@@ -157,13 +157,9 @@
             <div class="float-right">
               <%= image_tag("all.png")%>
             </div>
-            <h1 class="text-white"><%= @tasks.count %></h1>
+            <h1 class="text-white"><%= @tasks.all.count %></h1>
             <hr class="my-1">
-            <% if @tasks.count == 0 && @tasks.count == 1 %>
-              <h5 class="text-white pt-1">Completed Task</h5>
-            <% else %>
-              <h5 class="text-white pt-1">Completed Tasks</h5>
-            <% end %>
+              <h5 class="text-white pt-1">Total Tasks</h5>
         </div>
       </div>
     </div>
