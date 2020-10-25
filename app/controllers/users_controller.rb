@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!
 
   def team
-  	@users = User.all
+  	@users = User.all.order('created_at ASC')
   end
 
   def profile
