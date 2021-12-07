@@ -4,12 +4,6 @@ A project management application for small to medium sized team, written on Ruby
 # Home Page
 ![alt text](https://i.imgur.com/aDUlzyq.png)
 
-# SignUp Page
-![alt text](https://i.imgur.com/QMcyJRq.png)
-
-# Home Page
-![alt text](https://i.imgur.com/ZwLIFuC.png)
-
 # Projects Page
 ![alt text](https://i.imgur.com/HkQRPKW.png)
 
